@@ -5,6 +5,8 @@ export interface OrderModel {
     updatedAt: string | null
     book: {
         bookId: number,
-        title: string
+        title: string,
+        author: string,
+        price: string,
     }
 }

@@ -1,5 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import AboutView from '@/views/AboutView.vue'
+import BookView from '@/views/BookView.vue'
+import LoginView from '@/views/LoginView.vue'
+import NewBook from '@/views/NewBook.vue'
+import EditBook from '@/views/EditBook.vue'
+import OrderView from '@/views/OrderView.vue'
+import EditOrder from '@/views/EditOrder.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,13 +17,42 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/login',
+      name: 'login',
+      component: LoginView,
+    },
+    {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      component: AboutView,
     },
+    {
+      path: '/book',
+      name: 'book',
+      component: BookView,
+    },
+    {
+      path: '/book/new',
+      name: 'new-book',
+      component: NewBook,
+    },
+    {
+      path: '/book/:id',
+      name: 'edit-book',
+      component: EditBook,
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: OrderView,
+    },
+    {
+      path: '/order/:id',
+      name: 'edit-order',
+      component: EditOrder,
+    },
+    
+    
   ],
 })
 
