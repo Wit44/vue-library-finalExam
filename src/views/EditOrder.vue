@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import Navigation from '@/components/Navigation.vue';
 import { useLogout } from '@/hooks/logout.hook';
+import type { BookModel } from '@/models/book.model';
 import type { OrderModel } from '@/models/order.model';
+import { BookService } from '@/services/book.service';
 import { OrderService } from '@/services/order.service';
 import { formatTime } from '@/utils';
 import { ref } from 'vue';
@@ -13,12 +15,18 @@ const route = useRoute()
 const router = useRouter()
 const id = Number(route.params.id)
 const order = ref<OrderModel>()
+const books = ref<BookModel[]>()
 
 OrderService.getOrderById(id)
     .then(rsp => order.value = rsp.data)
     .catch(e => logout(e))
 
-function doUpdate(){
+BookService.getBooks()
+    .then(rsp => books.value = rsp.data)
+    .catch(e => logout(e))
+
+
+function doUpdate() {
     OrderService.updateOrder(id, order.value)
         .then(rsp => router.push('/order'))
         .catch(e => logout(e))
@@ -27,7 +35,6 @@ function doUpdate(){
 
 <template>
     <Navigation />
-    CAN YOU SEE THIS?
     <div class="custom-form" v-if="order">
         <h1>Edit Order</h1>
         <form v-on:submit.prevent="doUpdate">
@@ -40,16 +47,8 @@ function doUpdate(){
                 <input type="number" class="form-control" id="bookid" :value="order.bookId" disabled>
             </div>
             <div class="mb-3">
-                <label for="title" class="form-label">Title:</label>
-                <input type="text" class="form-control" id="title" v-model="order.book.title">
-            </div>
-            <div class="mb-3">
-                <label for="price" class="form-label">Price:</label>
-                <input type="text" class="form-control" id="price" v-model="order.book.price">
-            </div>
-            <div class="mb-3">
-                <label for="author" class="form-label">Author:</label>
-                <input type="text" class="form-control" id="author" v-model="order.book.author">
+                <label for="delivery" class="form-label">Delivery:</label>
+                <input type="text" class="form-control" id="delivery" :value="order.delivery">
             </div>
             <div class="mb-3">
                 <label for="updated" class="form-label">Updated At:</label>

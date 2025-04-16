@@ -30,13 +30,14 @@ function doDelete(o: OrderModel) {
 <template>
     <Navigation/>
     <div>
-        <h3>Order</h3>
+        <h1 class="text-center">Orders</h1>
     </div>
     <table class="table table-striped table-hover" v-if="orders">
         <thead>
             <tr>
                 <th scope="col">Order ID</th>
                 <th scope="col">Book ID</th>
+                <th scope="col">Delivery</th>
                 <th scope="col">Title</th>
                 <th scope="col">Price</th>
                 <th scope="col">Author</th>
@@ -48,6 +49,7 @@ function doDelete(o: OrderModel) {
             <tr v-for="o of orders" :key="o.orderId">
                 <th scope="row">{{ o.orderId }}</th>
                 <td>{{ o.bookId}}</td>
+                <td>{{ o.delivery}}</td>
                 <td>{{ o.book.title }}</td>
                 <td>{{ o.book.price }}</td>
                 <td>{{ o.book.author }}</td>

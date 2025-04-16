@@ -6,7 +6,18 @@ import Navigation from '@/components/Navigation.vue';
 <template>
   <Navigation/>
   <div class="about">
-    <h1>This is an about page</h1>
+    <div class="text-center">
+      <h1>Library app</h1>
+      <p>
+        This application is for employees who manage a library
+      </p>
+      <p>
+        This app is made as the project for the final exam in SASE 
+      </p>
+      <p>
+        VLADIMIR MILOSAVLJEVIC - 2021213123
+      </p>
+    </div>
   </div>
 </template>
 

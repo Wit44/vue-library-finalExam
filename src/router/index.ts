@@ -42,15 +42,16 @@ const router = createRouter({
       component: EditBook,
     },
     {
-      path: '/order',
-      name: 'order',
-      component: OrderView,
-    },
-    {
       path: '/order/:id',
       name: 'edit-order',
       component: EditOrder,
     },
+    {
+      path: '/order',
+      name: 'order',
+      component: OrderView,
+    },
+    
     
     
   ],
