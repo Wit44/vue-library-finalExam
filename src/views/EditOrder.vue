@@ -48,7 +48,7 @@ function doUpdate() {
             </div>
             <div class="mb-3">
                 <label for="delivery" class="form-label">Delivery:</label>
-                <input type="text" class="form-control" id="delivery" :value="order.delivery">
+                <input type="text" class="form-control" id="delivery" v-model="order.delivery">
             </div>
             <div class="mb-3">
                 <label for="updated" class="form-label">Updated At:</label>
